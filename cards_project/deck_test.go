@@ -13,7 +13,7 @@ func TestNewDeck(t *testing.T) {
 		t.Errorf("Excepted 1st in deck to be 'Ace of Spades', got %v", d[0])
 	}
 
-	if d[len(d) -1] != "Four of Hearts" {
-		t.Errorf("Excepted last in deck to be 'Four of Hearts', got %v", d[len(d) -1])
+	if d[len(d)-1] != "Four of Hearts" {
+		t.Errorf("Excepted last in deck to be 'Four of Hearts', got %v", d[len(d)-1])
 	}
 }
