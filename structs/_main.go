@@ -6,26 +6,25 @@ import (
 
 type contactInfo struct {
 	number int
-	email string
+	email  string
 }
 
 type person struct {
 	firstname string
-	lastname string
+	lastname  string
 	contactInfo
 }
 
 func main() {
 	foo := person{
 		firstname: "John",
-		lastname: "Doe",
+		lastname:  "Doe",
 		contactInfo: contactInfo{
-			number: 1234,
-			email: "foo@foo.com",
+			number: 123,
+			email:  "foo@bar.com",
 		},
 	}
 
-	foo.print()
 	foo.updateName("Jane")
 	foo.print()
 }
