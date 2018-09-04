@@ -7,6 +7,8 @@ import (
 	"net/http"
 )
 
+type logWriter struct{}
+
 func main() {
 	resp, err := http.Get("https://artifactory.deere.com/list/pypi-local/")
 	if err != nil {
@@ -37,5 +39,17 @@ func main() {
 	fmt.Println(string(bs))
 	*/
 
-	io.Copy(os.Stdout, resp.Body)
+	// 3rd -> os.Stdout implements the writer interface and resp.Body implements the reader
+	// io.Copy(os.Stdout, resp.Body)
+
+	// 4th -> custom writer interface
+	lw := logWriter{}
+
+	io.Copy(lw, resp.Body)
 }
+
+func (logWriter) Write(bs []byte) (int, error) {
+	fmt.Println(string(bs));
+
+	return len(bs), nil
+} 
